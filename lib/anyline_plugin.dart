@@ -29,6 +29,7 @@ class AnylinePlugin {
   Future<String> startScanning(String configJson) async {
     if (await Permission.camera.isPermanentlyDenied) {
       openAppSettings();
+      return '';
     } else if (await Permission.camera.request().isGranted) {
       final Map<String, String> config = {
         Constants.EXTRA_CONFIG_JSON: configJson
